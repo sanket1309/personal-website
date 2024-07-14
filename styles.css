@@ -1,0 +1,19 @@
+.header {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.title-underline-container {
+    text-align: center;
+    padding-top: 0;
+}
+
+.title-underline {
+    display: inline-block;
+    height: 4px;
+    width: 40%;
+    background-color: aqua;
+    text-align: center;
+}
