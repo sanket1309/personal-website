@@ -1,8 +1,23 @@
+html,
+body {
+    height: 100%;
+}
+
 .header {
     text-align: center;
+    height: 2rem;
     font-size: 2rem;
     font-weight: 700;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+#company-logo {
+    height: 2rem;
+    content: url('https://upload.wikimedia.org/wikipedia/commons/c/cd/Paytm_logo.jpg')
+}
+
+#at_sym {
+    font-weight: 100;
 }
 
 .title-underline-container {
@@ -13,7 +28,87 @@
 .title-underline {
     display: inline-block;
     height: 4px;
-    width: 40%;
-    background-color: aqua;
+    width: 70%;
+    background-color: #17bffc;
     text-align: center;
+}
+
+.navigation {
+    text-align: center;
+    margin-top: 10px;
+    padding-bottom: 10px;
+}
+
+.navigation-item {
+    display: inline;
+    padding-left: 30px;
+    padding-right: 30px;
+
+    font-size: 1.0rem;
+    font-weight: 200;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    cursor: pointer;
+}
+
+.content-container {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.content-area {
+    display: inline-block;
+    width: 70%;
+    height: 100%;
+    margin-top: 10px;
+    text-align: start;
+}
+
+.experience {
+    height: 100%;
+}
+
+.role-name-container {
+    display: inline-block;
+    height: 100%;
+    float: left;
+    border-right: 2px solid lightgray;
+    background-color: white;
+}
+
+.company-name {
+    padding: 10px;
+}
+
+.role {
+    font-size: 1.1rem;
+    font-weight: 200;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 10px;
+}
+
+.role-name {
+    display: inline-block;
+    font-weight: bold;
+}
+
+.role-dur {
+    /* display: inline-block; */
+    /* float: right; */
+    font-style: italic;
+}
+
+/* .role-desc {
+    padding-top: 10px;
+} */
+
+.role-content-container {
+    display: flex;
+    flex-direction: row;
+    padding-left: 20px;
+
+    font-size: 1.1rem;
+    font-weight: 200;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
