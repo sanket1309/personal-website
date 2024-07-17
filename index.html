@@ -8,31 +8,46 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 
-<body>
-    <div class="header">sanket patil</div>
+<body onresize="onResizeScreen()">
+    <div class="header">
+        <div class="nav-menu-icon"><img src="navigation.png" alt=""></div>sanket patil
+    </div>
     <!-- <div class="header">sse <span id="at_sym">@</span><img id="company-logo"></div> -->
     <!-- <div class="title-underline-container">
         <span class="title-underline"></span>
     </div> -->
+    <div class="nav-menu">
+        <div class="nav-menu-item">about</div>
+        <div class="nav-menu-item">experience</div>
+        <div class="nav-menu-item">projects</div>
+        <div class="nav-menu-item">resume</div>
+    </div>
     <div class="navigation">
+        <div class="navigation-item">about</div>
         <div class="navigation-item">experience</div>
         <div class="navigation-item">projects</div>
-        <div class="navigation-item">about</div>
         <div class="navigation-item">resume</div>
     </div>
-    <div class="content-container">
+    <!-- <div class="content-container">
         <div class="content-area">
-            <div class="experience">
+            <div id="experience">
                 <div class="role-name-container">
                     <div class="company-name"><img id="company-logo"></div>
-                    <div class="role" id="rl_sse_paytm">
-                        <div class="role-name">Senior Software Engineer</div>
-                        <div class="role-dur">July 2024 - Present</div>
+
+                    <div class="role">
+                        <div class="role-container" id="rl_sse_paytm">
+                            <div class="role-name">Senior Software Engineer</div>
+                            <div class="role-dur">July 2024 - Present</div>
+                        </div>
+                        <div class="role-cnt"></div>
                     </div>
 
-                    <div class="role" id="rl_se_paytm">
-                        <div class="role-name">Software Engineer</div>
-                        <div class="role-dur">July 2022 - June 2024</div>
+                    <div class="role">
+                        <div class="role-container" id="rl_se_paytm">
+                            <div class="role-name">Software Engineer</div>
+                            <div class="role-dur">July 2022 - June 2024</div>
+                        </div>
+                        <div class="role-cnt"></div>
                     </div>
                 </div>
                 <div class="role-content-container">
@@ -72,11 +87,30 @@
                                     continue seamless onboarding of users stricting to the NPCI compliances.</li>
                             </ul>
                         </div>
+                        <div class="role-skills">
+                            Skills: <span class="skill-items">Java, Spring Boot, AWS, SQL, Redis, Kafka, Grafana,
+                                Prometheus, PromQL, LogQL, Data Analysis</span>
+                        </div>
+
+
+
+                        <div class="team">Team - Motor Insurance (till November 2022)</div>
+                        <div class="role-desc">
+                            <ul>
+                                <li>Built API to fetch, store, and serve vehicle details from third-party vendors for
+                                    motor insurance.</li>
+                                <li>Established caching for vehicle details APIs, improving response times and
+                                    performance.</li>
+                            </ul>
+                        </div>
+                        <div class="role-skills">
+                            Skills: <span class="skill-items">Kotlin, Spring Boot, AWS, SQL, Redis</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <script src="script.js"></script>
 </body>

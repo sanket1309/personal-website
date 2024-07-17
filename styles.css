@@ -1,6 +1,8 @@
 html,
 body {
+    margin: 0;
     height: 100%;
+    overflow: hidden;
 }
 
 .header {
@@ -9,6 +11,44 @@ body {
     font-size: 2rem;
     font-weight: 700;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 10px;
+}
+
+.nav-menu-icon img {
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    height: 40px;
+    cursor: pointer;
+    z-index: 100;
+    visibility: hidden;
+}
+
+.nav-menu {
+    position: fixed;
+    width: 100%;
+    /* height: 30%; */
+    top: 0;
+    left: 0;
+    z-index: 99;
+    overflow: hidden;
+    background-color: white;
+
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    visibility: hidden;
+    text-align: center;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 40px;
+    padding-bottom: 20px;
+}
+
+.nav-menu-item {
+    font-size: 1.4rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    cursor: pointer;
 }
 
 #company-logo {
@@ -35,14 +75,14 @@ body {
 
 .navigation {
     text-align: center;
-    margin-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .navigation-item {
     display: inline;
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 5px;
+    padding-right: 5px;
 
     font-size: 1.0rem;
     font-weight: 200;
@@ -50,9 +90,21 @@ body {
     cursor: pointer;
 }
 
+/* .navigation-item:after {
+    content: '';
+    width: 60px;
+    height: 4px;
+    background: #17bffc;
+    position: absolute;
+
+    bottom: -40px;
+}
+
+*/
+
 .content-container {
     width: 100%;
-    height: 100%;
+    height: 80%;
     text-align: center;
     margin-top: 10px;
 }
@@ -63,9 +115,10 @@ body {
     height: 100%;
     margin-top: 10px;
     text-align: start;
+    overflow-y: auto;
 }
 
-.experience {
+#experience {
     height: 100%;
 }
 
@@ -73,7 +126,7 @@ body {
     display: inline-block;
     height: 100%;
     float: left;
-    border-right: 2px solid lightgray;
+    border-right: 2px solid #17bffc;
     background-color: white;
 }
 
@@ -81,11 +134,12 @@ body {
     padding: 10px;
 }
 
-.role {
-    font-size: 1.1rem;
+.role-container {
+    font-size: 1.0rem;
     font-weight: 200;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     padding: 10px;
+    cursor: pointer;
 }
 
 .role-name {
@@ -105,10 +159,38 @@ body {
 
 .role-content-container {
     display: flex;
-    flex-direction: row;
+    height: 100%;
+    flex-direction: column;
     padding-left: 20px;
 
     font-size: 1.1rem;
     font-weight: 200;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    overflow-y: auto;
+}
+
+.role-content-container::-webkit-scrollbar {
+    display: none;
+}
+
+.role-content,
+.role-cnt {
+    display: block;
+    font-size: 1.3rem;
+    /* height: 80%; */
+}
+
+li {
+    list-style-type: "•   ";
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.role-skills {
+    padding-bottom: 20px;
+}
+
+.skill-items {
+    font-weight: 700;
+    font-style: italic;
 }
