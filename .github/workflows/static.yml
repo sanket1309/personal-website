@@ -59,6 +59,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           ref: production
+          token: ${{ secrets.TOKEN }}
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
