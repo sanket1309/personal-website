@@ -33,28 +33,28 @@ jobs:
         with:
           ref: master
           token: ${{ secrets.TOKEN }}
-      # - name: Set up Minify Actions
-      #   uses: amireshoon/minifyAction@main
-      #   with:
-      #     repo: $prepo
-      # - name: Minifying Codes
-      #   run: |
-      #     minifier.sh $prepo
-      - name: Minify-JS Action
-        uses: jossydevers/minify-js@v1.0.0
-          
-      # Auto-commit to repository
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      - name: Set up Minify Actions
+        uses: amireshoon/minifyAction@main
         with:
-          commit_message: 'Minify-JS : Commit Pipeline'
-          branch: "production"
-      # - name: Pushing to production branch
-      #   uses: actions-js/push@master
+          repo: $prepo
+      - name: Minifying Codes
+        run: |
+          minifier.sh $prepo
+      # - name: Minify-JS Action
+      #   uses: jossydevers/minify-js@v1.0.0
+          
+      # # Auto-commit to repository
+      # - uses: stefanzweifel/git-auto-commit-action@v4
       #   with:
-      #     github_token: ${{ secrets.TOKEN }}
-      #     directory: github/workspace
-      #     branch: production
-      #     message: Minified css, js and html
-      #     author_name: MinifyAction[bot]
-      #     author_email: minifyAction@users.noreply.github.com
-      #     force: true
+      #     commit_message: 'Minify-JS : Commit Pipeline'
+      #     branch: "production"
+      - name: Pushing to production branch
+        uses: actions-js/push@master
+        with:
+          github_token: ${{ secrets.TOKEN }}
+          directory: github/workspace
+          branch: production
+          message: Minified css, js and html
+          author_name: MinifyAction[bot]
+          author_email: minifyAction@users.noreply.github.com
+          force: true
