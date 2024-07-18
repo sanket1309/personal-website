@@ -34,7 +34,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Set up Minify Actions
-      - uses: amireshoon/minifyAction@main
+        uses: amireshoon/minifyAction@main
         with:
           repo: $prepo
       - name: Minifying Codes
