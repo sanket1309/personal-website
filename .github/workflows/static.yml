@@ -50,6 +50,7 @@ jobs:
         with:
           commit_message: "bot: Add auto minified files"
           branch: "production"
+          add_options: '-u'
           push_options: '--force'
 
       # - uses: stefanzweifel/git-auto-commit-action@v4
