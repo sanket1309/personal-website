@@ -30,6 +30,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
           ref: master
       - name: Set up Minify Actions
         uses: amireshoon/minifyAction@main
