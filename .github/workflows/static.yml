@@ -41,13 +41,18 @@ jobs:
       #     minifier.sh $prepo
       - name: auto minify the files
         uses: nizarmah/auto-minify@v3
-      - name: Pushing to production branch
-        uses: actions-js/push@master
+      - name: auto commit the minified files
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          github_token: ${{ secrets.TOKEN }}
-          directory: github/workspace
-          branch: production
-          message: Minified css, js and html
-          author_name: MinifyAction[bot]
-          author_email: minifyAction@users.noreply.github.com
-          force: true
+          commit_message: "bot: Add auto minified files"
+          branch: "production"
+      # - name: Pushing to production branch
+      #   uses: actions-js/push@master
+      #   with:
+      #     github_token: ${{ secrets.TOKEN }}
+      #     directory: github/workspace
+      #     branch: production
+      #     message: Minified css, js and html
+      #     author_name: MinifyAction[bot]
+      #     author_email: minifyAction@users.noreply.github.com
+      #     force: true
