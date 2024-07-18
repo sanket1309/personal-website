@@ -11,6 +11,7 @@ const iterateHtmlCollection = (collection,doForElement) => {
     }
 }
 
+//NAVIGATION
 const hideNavigation = (toHide) => {
     const navigation = getFirstClass('navigation')
     navigation.style.display = toHide ? "none" :"block"
@@ -74,14 +75,103 @@ const addOnNavigationClick = () => {
     })
 }
 
+//EXPERIENCE
+const roleContentIdMapping = new Map([
+    ['rl_sse_paytm','cnt_sse_paytm'],
+    ['rl_se_paytm','cnt_se_paytm']
+])
+var selectedRoleId = 'rl_sse_paytm'
+const showRoleContent = (roleId) => {
+    const role =  document.getElementById(roleId).parentElement
+    const roleContainer = getFirstClass('role-container',role)
+    const contentId = roleContentIdMapping.get(roleContainer.id)
+    const roleContents = document.getElementsByClassName('role-content')
+
+    const roleContentContainer = getFirstClass('role-content-container')
+    roleContentContainer.style.display = isSmallScreen ? "none" : "block"
+    const roleNameContainer = getFirstClass('role-name-container')
+    roleNameContainer.style.display = isSmallScreen ? "block" : "inline-block"
+    roleNameContainer.style.borderRight = isSmallScreen ? "none" : "2px solid #17bffc"
+    roleNameContainer.style.width = isSmallScreen ? "100%" : null
+    roleNameContainer.style.textAlign = isSmallScreen ? "center" : null
+
+    if(isSmallScreen){
+        const roleCnt = getFirstClass('role-cnt',role)
+        roleCnt.innerHTML = (selectedRoleId != roleId) ? 
+        document.getElementById(contentId).innerHTML: "";
+        // const 
+        if(selectedRoleId != roleId){
+            selectedRoleId = roleId
+        }else{
+            // selectedRoleId = ""
+        }
+
+    }else{
+        iterateHtmlCollection(roleContents, (roleContent)=>{
+            roleContent.style.display = (contentId == roleContent.id) ? "block" : "none"
+        })
+        const roleCnts = document.getElementsByClassName('role-cnt')
+        iterateHtmlCollection(roleCnts, (roleCnt) => {
+            roleCnt.innerHTML = ""
+        })
+        selectedRoleId = roleId
+    }
+}
+const onClickRole = (roleId) => {
+    if(!roleId) return
+    const roleContainer = document.getElementById(roleId)
+    const roleName = getFirstClass('role-name',roleContainer)
+    const roleDur = getFirstClass('role-dur',roleContainer)
+    const role = roleContainer.parentElement
+    const roles = document.getElementsByClassName('role')
+
+    showRoleContent(roleId)
+    if(isSmallScreen){
+        iterateHtmlCollection(roles,(role)=>{
+            const roleContainer = getFirstClass('role-container',role)
+            roleContainer.style.color = (selectedRoleId == roleContainer.id)?"#17bffc":"black"
+            roleContainer.style.backgroundColor = "white"
+        });
+    }else{
+        iterateHtmlCollection(roles,(role)=>{
+            const roleContainer = getFirstClass('role-container',role)
+            roleContainer.style.color = (selectedRoleId == roleContainer.id)?"white":"black"
+            roleContainer.style.backgroundColor = (selectedRoleId == roleContainer.id)?"#17bffc":"white"
+        });
+    }
+}
+const onClickRoleForEvent = (event) => {
+    const clickedElement = event.srcElement || event.target
+    let roleContainer = (clickedElement.className != 'role-container')?
+    clickedElement.parentElement :clickedElement
+    console.log("roleContainer: ",roleContainer)
+    onClickRole(roleContainer.id)
+}
+const addOnRoleClicked = () => {
+    const roleContainers = document.getElementsByClassName('role-container')
+    iterateHtmlCollection(roleContainers, (roleContainer)=>{
+        console.log("clicked "+roleContainer)
+        roleContainer.addEventListener('click',onClickRoleForEvent)
+    })
+}
+
+const updateContentAreaSize = () => {
+    getFirstClass('content-area').style.width = isSmallScreen ? "95%": "70%";
+}
 const onResizeScreen = () => {
     updateIsSmallScreen()
+    updateContentAreaSize()
     hideNavIcon(!isSmallScreen)
     if(!isSmallScreen){
         hideNavMenu(true)
     }
     onClickNavigationItemByName(selectedNavItemName,!isSmallScreen)
     hideNavigation(isSmallScreen)
+    if(!isSmallScreen){
+        onClickRole(!selectedRoleId?"rl_sse_paytm":selectedRoleId)
+    }else{
+        onClickRole(selectedRoleId)
+    }
     // console.log(`onResizeScreen called ${isSmallScreen}`)
 }
 
@@ -90,4 +180,6 @@ onResizeScreen()
 addOnNavigationClick()
 //default selection
 onClickNavigationItemByName('experience',!isSmallScreen)
+onClickRole('rl_sse_paytm')
 addOnNavIconClicked()
+addOnRoleClicked()
