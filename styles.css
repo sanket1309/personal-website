@@ -12,11 +12,20 @@ body {
     font-weight: 700;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     padding: 10px 10px 0 10px;
+
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
 }
 
 .title-first-letter {
     /* color: #17bffc; */
 }
+
+#header-name {}
 
 .nav-menu-icon img {
     display: inline-block;
@@ -122,6 +131,10 @@ body {
     margin-top: 10px;
     text-align: start;
     overflow-y: auto;
+}
+
+.content-area::-webkit-scrollbar {
+    display: none;
 }
 
 #experience {
