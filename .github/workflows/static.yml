@@ -23,16 +23,14 @@ concurrency:
 
 jobs:
   # Single deploy job since we're just deploying
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  minify:
     runs-on: ubuntu-latest
     env:
       prepo: ${{github.repository}}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+          ref: master
       - name: Set up Minify Actions
         uses: amireshoon/minifyAction@main
         with:
@@ -50,6 +48,12 @@ jobs:
           author_name: MinifyAction[bot]
           author_email: minifyAction@users.noreply.github.com
           force: true
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
       - name: Checkout production branch
         uses: actions/checkout@v2
         with:
