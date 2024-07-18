@@ -28,11 +28,28 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    env:
+      prepo: ${{github.repository}}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Minify Action
-        uses: dra1ex/minify-action@v1.0.3
+      - name: Set up Minify Actions
+      - uses: amireshoon/minifyAction@main
+        with:
+          repo: $prepo
+      - name: Minifying Codes
+        run: |
+          minifier.sh $prepo
+      - name: Pushing to production branch
+        uses: actions-js/push@master
+        with:
+          github_token: ${{ secrets.TOKEN }}
+          directory: github/workspace
+          branch: production
+          message: Minified css, js and html
+          author_name: MinifyAction[bot]
+          author_email: minifyAction@users.noreply.github.com
+          force: true
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
