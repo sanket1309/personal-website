@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sanket Patil</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="styles.min.css">
+    <!-- <link rel="stylesheet" href="styles.min.css"> -->
 </head>
 
 <body onresize="onResizeScreen()">
@@ -16,9 +16,9 @@
             <span class="title-first-letter">p</span>atil</span>
     </div>
     <!-- <div class="header">sse <span id="at_sym">@</span><img id="company-logo"></div> -->
-    <div class="title-underline-container">
+    <!-- <div class="title-underline-container">
         <span class="title-underline"></span>
-    </div>
+    </div> -->
     <div class="nav-menu">
         <div class="nav-menu-item">about</div>
         <div class="nav-menu-item">experience</div>
@@ -70,12 +70,16 @@
                                     providers.</li>
                             </ul>
                         </div>
+                        <div class="role-skills">
+                            Skills: <span class="skill-items">Java, Spring Boot, AWS, SQL, Redis, Kafka, Grafana,
+                                Prometheus, PromQL, LogQL</span>
+                        </div>
                     </div>
                     <div class="role-content" id="cnt_se_paytm">
                         <div class="team">Team - Oauth (till June 2024)</div>
                         <div class="role-desc">
                             <ul>
-                                <li>Key developer in migrating 1.180 billion user device records, involving extensive
+                                <li>Key developer in migrating 1.18 billion user device records, involving extensive
                                     data restructuring and verification
                                     through a data reconciliation service. Developed a robust monitoring system that
                                     increased the efficiency of the
@@ -86,7 +90,7 @@
                                     device binding process.</li>
                                 <li>Established a scalable device management service for 2FA onboarding, handling 1.1
                                     billion devices data and
-                                    processing a high daily volume of 20 TPS.</li>
+                                    processing a high daily volume of 20K TPS.</li>
                                 <li>Played an important role integrating third party UPI payment service providers to
                                     the device backend system to
                                     continue seamless onboarding of users stricting to the NPCI compliances.</li>
@@ -121,8 +125,118 @@
                 </iframe>
             </div> -->
 
-            <!-- <div id="projects">
-            </div> -->
+            <div id="projects">
+                <div class="project-nav-button" id="prev">
+                    <div class="round-button">
+                        prev
+                    </div>
+                </div>
+                <div class="project" id="prj_hms">
+                    <div class="project-header">HMS App (Client Project)</div>
+                    <div class="project-slides">
+                        <div class="project-content" name="prj_hms_sl1">
+                            <div class="app-demo">
+                                <img id="ad1" src="prj_hms_sld1_demo" alt="">
+                            </div>
+                            <div class="app-demo-desc">
+                                A hospital management system app, which enables the maintenance of patients data,
+                                documents
+                                and bills. It features role based controlled access for the admins and staff, enabling
+                                it to
+                                manage patients and visit records, generate discharge cards and bills in custom
+                                shareable
+                                pdf format.
+                            </div>
+                        </div>
+                        <div class="project-content" name="prj_hms_sl2">
+                            <div class="app-demo">
+                                <img id="ad1" src="prj_hms_sld1_demo" alt="">
+                            </div>
+                            <div class="app-demo-desc">
+                                A hospital management system app, which enables the maintenance of patients data,
+                                documents
+                                and bills. It features role based controlled access for the admins and staff, enabling
+                                it to
+                                manage patients and visit records, generate discharge cards and bills in custom
+                                shareable
+                                pdf format.
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="projects-nav-item">Linkedin like Platform (Academic Project)</div> -->
+                </div>
+                <div class="project" id="prj_bk">
+                    <div class="project-header">Book App</div>
+                    <div class="project-slides">
+                        <div class="project-content" name="prj_hms_sl1">
+                            <div class="app-demo">
+                                <img id="ad1" src="prj_hms_sld1_demo" alt="">
+                            </div>
+                            <div class="app-demo-desc">
+                                A hospital management system app, which enables the maintenance of patients data,
+                                documents
+                                and bills. It features role based controlled access for the admins and staff, enabling
+                                it to
+                                manage patients and visit records, generate discharge cards and bills in custom
+                                shareable
+                                pdf format.
+                            </div>
+                        </div>
+                        <div class="project-content" name="prj_hms_sl2">
+                            <div class="app-demo">
+                                <img id="ad1" src="prj_hms_sld1_demo" alt="">
+                            </div>
+                            <div class="app-demo-desc">
+                                A hospital management system app, which enables the maintenance of patients data,
+                                documents
+                                and bills. It features role based controlled access for the admins and staff, enabling
+                                it to
+                                manage patients and visit records, generate discharge cards and bills in custom
+                                shareable
+                                pdf format.
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="projects-nav-item">Linkedin like Platform (Academic Project)</div> -->
+                </div>
+                <div class="project-nav-button" id="next">
+                    <div class="round-button">
+                        next
+                    </div>
+                </div>
+            </div>
+
+            <div id="about">
+                <!-- <img id="prf-pic" src="1689150097088.jpeg" alt=""> -->
+                <div class="self-desc">
+                    <div class="self-desc-cnt">
+                        <h3 style="font-weight: normal;">hello,</h3>
+                        <h1 style="font-size: 2.2rem;">i'm <span style="color: #17bffc;">Sanket</span></h1>
+                        <h1>backend / android developer</h1>
+                        <p style="font-size: 1.3rem;">
+                            Currently working as Senior Software Engineer at
+                            <img id="text-paytm"> in oauth backend team, experienced
+                            in developing high volume scalable applications.
+                            In my free time, I enjoy creating android apps and continuously exploring
+                            new
+                            technologies
+                            and tools, always looking for innovative ways to solve everyday problems and improve
+                            efficiency.
+
+
+
+
+
+                        </p>
+                        <div class="social-links">
+                            <div class="social-item">
+                                <img id="social_mail" class="social-img" src="email.png" alt="">
+                                <img id="social_lnkdn" class="social-img" src="linkedin.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
         </div>
@@ -130,7 +244,7 @@
 
 
     <script src="script.js"></script>
-    <script src="script.min.js"></script>
+    <!-- <script src="script.min.js"></script> -->
 </body>
 
 </html>

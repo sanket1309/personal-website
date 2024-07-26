@@ -11,7 +11,7 @@ body {
     font-size: 2rem;
     font-weight: 700;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    padding: 10px 10px 0 10px;
+    padding: 10px 10px 10px 10px;
 
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -126,11 +126,11 @@ body {
 
 .content-area {
     display: inline-block;
-    width: 70%;
+    width: 50%;
     height: 100%;
     margin-top: 10px;
     text-align: start;
-    overflow-y: auto;
+    overflow-y: hidden;
 }
 
 .content-area::-webkit-scrollbar {
@@ -224,4 +224,165 @@ li {
 .skill-items {
     font-weight: 700;
     font-style: italic;
+}
+
+#projects {
+    height: 95%;
+    text-align: center;
+    padding-bottom: 5%;
+}
+
+#app-demo {
+    width: 100%;
+    height: 100%;
+}
+
+.project-nav-button {
+    display: inline-block;
+    width: 10%;
+    height: 80%;
+    margin-bottom: 20%;
+    background-color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.round-button {
+    /* width: 100%; */
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #eaeaea;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 700;
+    opacity: 0.8;
+}
+
+.round-button:hover {
+    background-color: #17bffc;
+    /* background-color: yellow; */
+}
+
+#prev {
+    float: left;
+}
+
+#next {
+    float: right;
+}
+
+.project {
+    display: inline-block;
+    width: 80%;
+    height: 100%;
+}
+
+
+
+.project-header {
+    width: 100%;
+    height: 10%;
+    text-align: center;
+    background-color: white;
+
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.project-slides {
+    height: 90%;
+    /* background-color: rebeccapurple; */
+    overflow-y: auto;
+}
+
+.project-slides::-webkit-scrollbar {
+    display: none;
+}
+
+.project-content {
+    height: 100%;
+    /* background-color: rebeccapurple; */
+}
+
+.app-demo {
+    display: flex;
+    float: left;
+    width: 50%;
+    height: 100%;
+    text-align: center;
+    /* background-color: red; */
+    justify-content: center;
+    align-items: center;
+}
+
+.app-demo-desc {
+    display: flex;
+    float: right;
+    width: 50%;
+    height: 100%;
+    /* background-color: aqua; */
+    font-size: 1.2rem;
+    align-items: center;
+    text-align: left;
+}
+
+/* 
+.sample1{
+    background-color: 100;
+} */
+
+#ad1 {
+    /* display: block; */
+    display: inline-block;
+    height: 80%;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+#prf-pic {
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    border: lightgray 3px solid;
+}
+
+.self-desc {
+    text-align: center;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.self-desc-cnt {
+    display: inline-block;
+    text-align: left;
+    width: 70%;
+    line-height: 1.7rem;
+}
+
+.social-img {
+    height: 35px;
+    width: 35px;
+    padding-right: 20px;
+    cursor: pointer;
+}
+
+#text-paytm {
+    height: 1.3rem;
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+    content: url('https://upload.wikimedia.org/wikipedia/commons/c/cd/Paytm_logo.jpg')
+}
+
+#text-android {
+    height: 1.3rem;
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+    content: url('https://1000logos.net/wp-content/uploads/2016/10/android-logo-wordmark.png')
 }

@@ -50,7 +50,7 @@ const onNavigateContent = (contentId) => {
 var selectedNavItemName;
 //changes nav item and navigates
 const onClickNavigationItemByName = (itemName,isTopNav = true) => {
-    if(itemName){
+    if(itemName && itemName != 'projects'){
         selectedNavItemName = itemName;
         const className = isTopNav ? 'navigation-item' : 'nav-menu-item';
         const navItems = document.getElementsByClassName(className);
@@ -102,15 +102,20 @@ const showRoleContent = (roleId) => {
     roleNameContainer.style.textAlign = isSmallScreen ? "center" : null;
 
     if(isSmallScreen){
-        const roleCnt = getFirstClass('role-cnt',role);
-        roleCnt.innerHTML = (selectedRoleId != roleId) ? 
-        document.getElementById(contentId).innerHTML: "";
+        const roles = document.getElementsByClassName('role')
+        iterateHtmlCollection(roles, (role_)=>{
+            const roleCnt = getFirstClass('role-cnt',role_);
+            const roleContainer_ = getFirstClass('role-container',role_);
+            const contentId_ = roleContentIdMapping.get(roleContainer_.id);
+            roleCnt.innerHTML = document.getElementById(contentId_).innerHTML;
+        })
+        
         // const 
-        if(selectedRoleId != roleId){
-            selectedRoleId = roleId;
-        }else{
-            // selectedRoleId = ""
-        }
+        // if(selectedRoleId != roleId){
+        //     selectedRoleId = roleId;
+        // }else{
+        //     // selectedRoleId = ""
+        // }
 
     }else{
         iterateHtmlCollection(roleContents, (roleContent)=>{
@@ -135,7 +140,7 @@ const onClickRole = (roleId) => {
     if(isSmallScreen){
         iterateHtmlCollection(roles,(role)=>{
             const roleContainer = getFirstClass('role-container',role);
-            roleContainer.style.color = (selectedRoleId == roleContainer.id)?"#17bffc":"black";
+            roleContainer.style.color = "#17bffc";
             roleContainer.style.backgroundColor = "white";
         });
     }else{
@@ -150,7 +155,6 @@ const onClickRoleForEvent = (event) => {
     const clickedElement = event.srcElement || event.target;
     let roleContainer = (clickedElement.className != 'role-container')?
     clickedElement.parentElement :clickedElement;
-    console.log("roleContainer: ",roleContainer);
     onClickRole(roleContainer.id);
 }
 const addOnRoleClicked = () => {
@@ -160,12 +164,13 @@ const addOnRoleClicked = () => {
     });
 };
 
-const updateContentAreaSize = () => {
-    getFirstClass('content-area').style.width = isSmallScreen ? "95%": "70%";
+const updateContentArea = () => {
+    getFirstClass('content-area').style.width = isSmallScreen ? "95%": "660px";
+    getFirstClass('content-area').style.overflowY = isSmallScreen ? "auto" : "hidden";
 };
 const onResizeScreen = () => {
     updateIsSmallScreen();
-    updateContentAreaSize();
+    updateContentArea();
     hideNavIcon(!isSmallScreen);
     if(!isSmallScreen){
         hideNavMenu(true);
@@ -177,7 +182,69 @@ const onResizeScreen = () => {
     }else{
         onClickRole(selectedRoleId);
     }
+    onUpdatePrj();
     // console.log(`onResizeScreen called ${isSmallScreen}`)
+}
+
+//PROJECTS
+var projectNext = new Map([
+    ['prj_hms','prj_bk'],
+    ['prj_bk','prj_bk']
+]);
+var projectPrev = new Map([
+    ['prj_bk','prj_hms'],
+    ['prj_hms','prj_hms']
+]);
+var currentProject = "";
+const onInitProject = (prj_id)=>{
+    if(currentProject == prj_id) return;
+    currentProject = prj_id;
+    const prjList = document.getElementsByClassName('project')
+    iterateHtmlCollection(prjList, (item)=>{
+        console.log("list",item)
+        item.style.display = (item.id == prj_id) ? "inline-block": "none";
+    })
+}
+const onNextProject = ()=>{
+    onInitProject(projectNext.get(currentProject));
+};
+const onPrevProject = ()=>{
+    onInitProject(projectPrev.get(currentProject));
+};
+const initPrjSlide = ()=>{
+    const prev = getFirstClass('round-button',document.getElementById('prev'));
+    prev.addEventListener('click', onPrevProject);
+    const next = getFirstClass('round-button',document.getElementById('next'));
+    next.addEventListener('click', onNextProject);
+};
+const onUpdatePrj = ()=>{
+    const prjContents = document.getElementsByClassName('project-content');
+    iterateHtmlCollection(prjContents, (prjContent)=>{
+        const appDemo = getFirstClass('app-demo',prjContent);
+        const appDemoDesc = getFirstClass('app-demo-desc',prjContent);
+        if(appDemo){
+            appDemo.style.display = isSmallScreen? "block" : "flex";
+            appDemo.style.width = isSmallScreen? "100%" : "50%";
+            // appDemo.style.height = isSmallScreen? "auto" : "100%";
+            // appDemo.style.float = isSmallScreen? "none" : "left";
+            appDemoDesc.style.display = isSmallScreen? "block" : "flex";
+            appDemoDesc.style.width = isSmallScreen? "100%" : "50%";
+            appDemoDesc.style.height = isSmallScreen? "auto" : "100%";
+            // appDemoDesc.style.float = isSmallScreen? "none" : "right";
+        }
+    })
+}
+
+//ABOUT
+const initSocialLinks = ()=>{
+    const socialMail = document.getElementById('social_mail');
+    socialMail.addEventListener('click',()=>{
+        open('mailto://sanketpatil1309@gmail.com');
+    });
+    const socialLnkdn = document.getElementById('social_lnkdn');
+    socialLnkdn.addEventListener('click',()=>{
+        open('https://www.linkedin.com/in/sanket-patil-dev/');
+    });
 }
 
 //FIRST TIME EXECUTION
@@ -187,7 +254,10 @@ onResizeScreen();
 window.onresize = onResizeScreen;
 addOnNavigationClick();
 //default selection
-onClickNavigationItemByName('experience',!isSmallScreen);
+onClickNavigationItemByName('about',!isSmallScreen);
 onClickRole('rl_sse_paytm');
 addOnNavIconClicked();
 addOnRoleClicked();
+initPrjSlide();
+onInitProject('prj_hms');
+initSocialLinks();
