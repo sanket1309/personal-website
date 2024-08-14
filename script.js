@@ -50,7 +50,9 @@ const onNavigateContent = (contentId) => {
 var selectedNavItemName;
 //changes nav item and navigates
 const onClickNavigationItemByName = (itemName,isTopNav = true) => {
-    if(itemName && itemName != 'projects'){
+    if(itemName){
+        const scrollHint = getFirstClass('scroll_hint');
+        scrollHint.style.display = itemName == "projects" ? "block" : "none";
         selectedNavItemName = itemName;
         const className = isTopNav ? 'navigation-item' : 'nav-menu-item';
         const navItems = document.getElementsByClassName(className);
@@ -165,6 +167,7 @@ const addOnRoleClicked = () => {
 };
 
 const updateContentArea = () => {
+    getFirstClass('content-container').style.height = isSmallScreen ? "100%": "80%";
     getFirstClass('content-area').style.width = isSmallScreen ? "95%": "660px";
     getFirstClass('content-area').style.overflowY = isSmallScreen ? "auto" : "hidden";
 };
@@ -217,22 +220,21 @@ const initPrjSlide = ()=>{
     const next = getFirstClass('round-button',document.getElementById('next'));
     next.addEventListener('click', onNextProject);
 };
+const updateRoundButton = ()=>{
+    const prev = getFirstClass('round-button',document.getElementById('prev'));
+    prev.style.borderRadius = isSmallScreen ? "0 50% 50% 0" : "50%";
+    const next = getFirstClass('round-button',document.getElementById('next'));
+    next.style.borderRadius = isSmallScreen ? "50% 0 0 50%" : "50%";
+};
 const onUpdatePrj = ()=>{
     const prjContents = document.getElementsByClassName('project-content');
     iterateHtmlCollection(prjContents, (prjContent)=>{
         const appDemo = getFirstClass('app-demo',prjContent);
         const appDemoDesc = getFirstClass('app-demo-desc',prjContent);
-        if(appDemo){
-            appDemo.style.display = isSmallScreen? "block" : "flex";
-            appDemo.style.width = isSmallScreen? "100%" : "50%";
-            // appDemo.style.height = isSmallScreen? "auto" : "100%";
-            // appDemo.style.float = isSmallScreen? "none" : "left";
-            appDemoDesc.style.display = isSmallScreen? "block" : "flex";
-            appDemoDesc.style.width = isSmallScreen? "100%" : "50%";
-            appDemoDesc.style.height = isSmallScreen? "auto" : "100%";
-            // appDemoDesc.style.float = isSmallScreen? "none" : "right";
-        }
-    })
+        prjContent.style.display = isSmallScreen? "block" : "inline-block";
+        prjContent.style.width = isSmallScreen? "100%" : "49%";
+    });
+    updateRoundButton();
 }
 
 //ABOUT
@@ -246,6 +248,17 @@ const initSocialLinks = ()=>{
         open('https://www.linkedin.com/in/sanket-patil-dev/');
     });
 }
+var prjName = "";
+const onLoadProjects = function () {
+    // Get the current URL
+    const currentUrl = window.location.href;
+    
+    // You can also perform actions based on the URL
+    if (currentUrl.includes("/?project=")) {
+        prjName = currentUrl.split("/?project=")[1];
+    }
+};
+onLoadProjects();
 
 //FIRST TIME EXECUTION
 onClickHeaderName();
@@ -254,10 +267,20 @@ onResizeScreen();
 window.onresize = onResizeScreen;
 addOnNavigationClick();
 //default selection
-onClickNavigationItemByName('about',!isSmallScreen);
+if(prjName == ""){
+    onClickNavigationItemByName('projects',!isSmallScreen);
+}else{
+    onClickNavigationItemByName('projects',!isSmallScreen);
+}
 onClickRole('rl_sse_paytm');
 addOnNavIconClicked();
 addOnRoleClicked();
 initPrjSlide();
-onInitProject('prj_hms');
+if(prjName == "hms"){
+    onInitProject('prj_hms');
+}else if(prjName == "book"){
+    onInitProject('prj_bk');
+}else{
+    onInitProject('prj_hms');
+}
 initSocialLinks();
