@@ -51,6 +51,18 @@ var selectedNavItemName;
 //changes nav item and navigates
 const onClickNavigationItemByName = (itemName,isTopNav = true) => {
     if(itemName){
+        const html = document.getElementsByTagName('html')[0];
+        if(itemName == "projects"){
+            html.style.setProperty('position', 'fixed', 'important');
+        }else{
+            html.style.position = "static";
+        }
+        const body = document.getElementsByTagName('body')[0];
+        if(itemName == "projects"){
+            body.style.setProperty('position', 'fixed', 'important');
+        }else{
+            body.style.position = "static";
+        }
         const scrollHint = getFirstClass('scroll_hint');
         scrollHint.style.display = itemName == "projects" ? "block" : "none";
         selectedNavItemName = itemName;
@@ -171,6 +183,36 @@ const updateContentArea = () => {
     getFirstClass('content-area').style.width = isSmallScreen ? "95%": "660px";
     getFirstClass('content-area').style.overflowY = isSmallScreen ? "auto" : "hidden";
 };
+const onUpdateExperience = () => {
+    const roleCntContainers = document.getElementsByClassName('role-desc');
+    iterateHtmlCollection(roleCntContainers, (roleCntCntr)=>{
+        roleCntCntr.style.fontSize = isSmallScreen ? "1.3rem" : "1.0rem";
+        const ul = roleCntCntr.getElementsByTagName('ul')[0];
+        // ul.style.listStyleType = isSmallScreen ? "none" : "disc";
+        ul.style.marginBlockStart = isSmallScreen ? "0" : "1em";
+        ul.style.paddingInlineStart = isSmallScreen ? "20px" : "40px";
+        const li = roleCntCntr.getElementsByTagName('li');
+        iterateHtmlCollection(li,(item)=>{
+            item.style.paddingTop = isSmallScreen ? "10px" : "0px";
+            item.style.paddingBottom = isSmallScreen ? "10px" : "0px";
+            item.style.justifyContent = isSmallScreen ? "center" : "inherit";
+        })
+    });
+
+    const roleCnts = document.getElementsByClassName('role-cnt');
+    iterateHtmlCollection(roleCnts, (roleCnt) => {
+        roleCnt.style.fontSize = isSmallScreen ? "1.3rem" : "1.0rem";
+    })
+    const roleContainers = document.getElementsByClassName('role-container');
+    iterateHtmlCollection(roleContainers, (roleContainer) => {
+        roleContainer.style.fontSize = isSmallScreen ? "1.3rem" : "1.0rem";
+    })
+    const roleSkills = document.getElementsByClassName('role-skills');
+    iterateHtmlCollection(roleSkills, (roleSkill) => {
+        roleSkill.style.textAlign = "left";
+        roleSkill.style.paddingInlineStart = isSmallScreen ? "20px" : "40px";
+    })
+};
 const onResizeScreen = () => {
     updateIsSmallScreen();
     updateContentArea();
@@ -185,6 +227,7 @@ const onResizeScreen = () => {
     }else{
         onClickRole(selectedRoleId);
     }
+    onUpdateExperience();
     onUpdatePrj();
     // console.log(`onResizeScreen called ${isSmallScreen}`)
 }
@@ -192,14 +235,35 @@ const onResizeScreen = () => {
 //PROJECTS
 var projectNext = new Map([
     ['prj_hms','prj_bk'],
-    ['prj_bk','prj_bk']
+    ['prj_bk','prj_lnkdn'],
+    ['prj_lnkdn','prj_lnkdn']
 ]);
 var projectPrev = new Map([
+    ['prj_lnkdn','prj_bk'],
     ['prj_bk','prj_hms'],
     ['prj_hms','prj_hms']
 ]);
 var currentProject = "";
 const onInitProject = (prj_id)=>{
+    if(prj_id == "prj_lnkdn"){
+        const prjContents = document.getElementsByClassName('project-content')
+        iterateHtmlCollection(prjContents, (item)=>{
+            item.style.display = "block";
+            item.style.width = "100%";
+            const demoImg = getFirstClass('app-demo-img',item);
+            demoImg.style.width = "100%";
+            demoImg.style.height = "auto";
+        });
+    }else{
+        const prjContents = document.getElementsByClassName('project-content')
+        iterateHtmlCollection(prjContents, (item)=>{
+            item.style.display = isSmallScreen? "block" : "inline-block";
+            item.style.width = isSmallScreen? "100%" : "49%";
+            const demoImg = getFirstClass('app-demo-img',item);
+            demoImg.style.width = "auto";
+            demoImg.style.height = "95%";
+        });
+    }
     if(currentProject == prj_id) return;
     currentProject = prj_id;
     const prjList = document.getElementsByClassName('project')
@@ -227,13 +291,12 @@ const updateRoundButton = ()=>{
     next.style.borderRadius = isSmallScreen ? "50% 0 0 50%" : "50%";
 };
 const onUpdatePrj = ()=>{
-    const prjContents = document.getElementsByClassName('project-content');
-    iterateHtmlCollection(prjContents, (prjContent)=>{
-        const appDemo = getFirstClass('app-demo',prjContent);
-        const appDemoDesc = getFirstClass('app-demo-desc',prjContent);
-        prjContent.style.display = isSmallScreen? "block" : "inline-block";
-        prjContent.style.width = isSmallScreen? "100%" : "49%";
-    });
+    onInitProject(currentProject);
+    // const prjContents = document.getElementsByClassName('project-content');
+    // iterateHtmlCollection(prjContents, (prjContent)=>{
+    //     prjContent.style.display = isSmallScreen? "block" : "inline-block";
+    //     prjContent.style.width = isSmallScreen? "100%" : "49%";
+    // });
     updateRoundButton();
 }
 
@@ -280,7 +343,10 @@ if(prjName == "hms"){
     onInitProject('prj_hms');
 }else if(prjName == "book"){
     onInitProject('prj_bk');
-}else{
+}else if(prjName == "clg_netw"){
+    onInitProject('prj_lnkdn');
+}
+else{
     onInitProject('prj_hms');
 }
 initSocialLinks();
