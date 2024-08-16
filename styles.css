@@ -250,6 +250,11 @@ li {
     align-items: center;
 }
 
+.project-nav-button:active {
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
 .round-button {
     /* width: 100%; */
     position: absolute;
