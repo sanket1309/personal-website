@@ -106,6 +106,16 @@ body {
     cursor: pointer;
 }
 
+:active {
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.navigation-item:active {
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
 /* .navigation-item:after {
     content: '';
     width: 60px;
