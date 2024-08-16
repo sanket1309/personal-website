@@ -181,12 +181,12 @@ const addOnRoleClicked = () => {
 const updateContentArea = () => {
     getFirstClass('content-container').style.height = isSmallScreen ? "100%": "80%";
     getFirstClass('content-area').style.width = isSmallScreen ? "95%": "660px";
-    getFirstClass('content-area').style.overflowY = isSmallScreen ? "auto" : "hidden";
+    getFirstClass('content-area').style.overflowY = isSmallScreen || selectedNavItemName == "about" ? "auto" : "hidden";
 };
 const onUpdateExperience = () => {
     const roleCntContainers = document.getElementsByClassName('role-desc');
     iterateHtmlCollection(roleCntContainers, (roleCntCntr)=>{
-        roleCntCntr.style.fontSize = isSmallScreen ? "1.3rem" : "1.0rem";
+        roleCntCntr.style.fontSize = isSmallScreen ? "1.1rem" : "1.0rem";
         const ul = roleCntCntr.getElementsByTagName('ul')[0];
         // ul.style.listStyleType = isSmallScreen ? "none" : "disc";
         ul.style.marginBlockStart = isSmallScreen ? "0" : "1em";
@@ -201,11 +201,11 @@ const onUpdateExperience = () => {
 
     const roleCnts = document.getElementsByClassName('role-cnt');
     iterateHtmlCollection(roleCnts, (roleCnt) => {
-        roleCnt.style.fontSize = isSmallScreen ? "1.3rem" : "1.0rem";
+        roleCnt.style.fontSize = isSmallScreen ? "1.1rem" : "1.0rem";
     })
     const roleContainers = document.getElementsByClassName('role-container');
     iterateHtmlCollection(roleContainers, (roleContainer) => {
-        roleContainer.style.fontSize = isSmallScreen ? "1.3rem" : "1.0rem";
+        roleContainer.style.fontSize = isSmallScreen ? "1.1rem" : "1.0rem";
     })
     const roleSkills = document.getElementsByClassName('role-skills');
     iterateHtmlCollection(roleSkills, (roleSkill) => {
@@ -331,7 +331,7 @@ window.onresize = onResizeScreen;
 addOnNavigationClick();
 //default selection
 if(prjName == ""){
-    onClickNavigationItemByName('projects',!isSmallScreen);
+    onClickNavigationItemByName('about',!isSmallScreen);
 }else{
     onClickNavigationItemByName('projects',!isSmallScreen);
 }
