@@ -1,5 +1,6 @@
 const smallScreenMaxSize = 800;
-const getIsSmallScreen = () => {return window.outerWidth <= smallScreenMaxSize};
+const getWindowWidth = () => {return window.outerWidth == 0 ? window.innerWidth : window.outerWidth;}
+const getIsSmallScreen = () => {return getWindowWidth() <= smallScreenMaxSize};
 var isSmallScreen = getIsSmallScreen();
 const updateIsSmallScreen = () => {isSmallScreen = getIsSmallScreen()};
 const getFirstClass = (className,element = document) => element.getElementsByClassName(className)[0];
