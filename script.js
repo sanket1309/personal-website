@@ -52,6 +52,10 @@ var selectedNavItemName;
 //changes nav item and navigates
 const onClickNavigationItemByName = (itemName,isTopNav = true) => {
     if(itemName){
+        if(itemName == "resume"){
+            window.open("https://drive.google.com/file/d/1ZlSKB_uNYV4JayTTctp4C28MibRgEBQr/view?usp=drive_link","_blank");
+            return;
+        }
         const html = document.getElementsByTagName('html')[0];
         if(itemName == "projects"){
             html.style.setProperty('position', 'fixed', 'important');
