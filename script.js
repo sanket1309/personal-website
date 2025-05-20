@@ -53,7 +53,7 @@ var selectedNavItemName;
 const onClickNavigationItemByName = (itemName,isTopNav = true) => {
     if(itemName){
         if(itemName == "resume"){
-            window.open("https://drive.google.com/file/d/1bvAwm0aebf2Eh1wvUaq7a1ryoZ-BLBl2/view?usp=drive_link","_blank");
+            window.open("https://drive.google.com/file/d/1f-xwtV43ZYvh0AB7Aq7-h3UF9zbQnBV5/view?usp=drive_link","_blank");
             return;
         }
         const html = document.getElementsByTagName('html')[0];
@@ -102,10 +102,11 @@ const addOnNavigationClick = () => {
 
 //EXPERIENCE
 const roleContentIdMapping = new Map([
+    ['rl_ad2_oracle','cnt_ad2_oracle'],
     ['rl_sse_paytm','cnt_sse_paytm'],
     ['rl_se_paytm','cnt_se_paytm']
 ]);
-var selectedRoleId = 'rl_sse_paytm';
+var selectedRoleId = 'rl_ad2_oracle';
 const showRoleContent = (roleId) => {
     const role =  document.getElementById(roleId).parentElement;
     const roleContainer = getFirstClass('role-container',role);
@@ -228,7 +229,7 @@ const onResizeScreen = () => {
     onClickNavigationItemByName(selectedNavItemName,!isSmallScreen);
     hideNavigation(isSmallScreen);
     if(!isSmallScreen){
-        onClickRole(!selectedRoleId?"rl_sse_paytm":selectedRoleId);
+        onClickRole(!selectedRoleId?"rl_ad2_oracle":selectedRoleId);
     }else{
         onClickRole(selectedRoleId);
     }
@@ -340,7 +341,7 @@ if(prjName == ""){
 }else{
     onClickNavigationItemByName('projects',!isSmallScreen);
 }
-onClickRole('rl_sse_paytm');
+onClickRole('rl_ad2_oracle');
 addOnNavIconClicked();
 addOnRoleClicked();
 initPrjSlide();

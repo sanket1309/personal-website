@@ -65,9 +65,14 @@ body {
     cursor: pointer;
 }
 
-#company-logo {
+#company-logo-paytm {
     height: 2rem;
     content: url('https://upload.wikimedia.org/wikipedia/commons/c/cd/Paytm_logo.jpg')
+}
+
+#company-logo-oracle {
+    height: 1.1rem;
+    content: url('https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg')
 }
 
 #at_sym {
@@ -430,6 +435,13 @@ li {
     padding-left: 0.2rem;
     padding-right: 0.2rem;
     content: url('https://upload.wikimedia.org/wikipedia/commons/c/cd/Paytm_logo.jpg')
+}
+
+#text-oracle {
+    height: 0.9rem;
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+    content: url('https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg')
 }
 
 #text-android {
