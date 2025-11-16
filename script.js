@@ -53,7 +53,7 @@ var selectedNavItemName;
 const onClickNavigationItemByName = (itemName,isTopNav = true) => {
     if(itemName){
         if(itemName == "resume"){
-            window.open("https://drive.google.com/file/d/1qxnhQfQvFb_6KDqkG2CAktgxdf-6Lku9/view?usp=sharing","_blank");
+            window.open("https://drive.google.com/file/d/1NS7HX7VDSPVi7IJAU3YHgGmAU-bdhpPj/view?usp=sharing","_blank");
             return;
         }
         const html = document.getElementsByTagName('html')[0];
